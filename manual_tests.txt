@@ -1,0 +1,11 @@
+python3 main.py --encrypt --ecb abcdefghijklmnop abcdefghijklmnop
+a91329af99a78d02aec17c507757aaef
+
+python3 main.py --decrypt --ecb a91329af99a78d02aec17c507757aaef abcdefghijklmnop
+abcdefghijklmnop
+
+python3 main.py --encrypt --cbc abcdefghijklmnop abcdefghijklmnop ponmlkjihgfedcba
+f5657e278d0afad7c848b965898c31df
+
+python3 main.py --decrypt --cbc f5657e278d0afad7c848b965898c31df abcdefghijklmnop ponmlkjihgfedcba
+abcdefghijklmnop
