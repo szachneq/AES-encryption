@@ -2,7 +2,7 @@ from constants import *
 from common import *
 from key_expansion import expand_key
 
-def aes_ecb_decrypt(cryptogram_str: str, key_str: str) -> str:
+def aes_ecb_decrypt(cryptogram_str: str, cryptogram_bytes: bytes, key_str: str) -> str:
     """
     Decrypt given cryptogram with a given key using AES ECB algorithm
     
@@ -18,15 +18,17 @@ def aes_ecb_decrypt(cryptogram_str: str, key_str: str) -> str:
         print("Key length invalid. Cannot perform key expansion")
         exit()
 
-    # check if cryptogram length is valid
-    if (len(cryptogram_str)) % 16 != 0:
-        print("Invalid cryptogram length, cannot proceed")
-        exit()
-
     # find values of constants used during the encryption
     NUM_ROUNDS = NUM_ROUNDS_FOR_KEY_LENGTH[len(key_str)]
 
-    matrices = prepare_cryptogram(cryptogram_str)
+    matrices = None
+    if cryptogram_str is not None:
+        matrices = prepare_cryptogram_str(cryptogram_str)
+    elif cryptogram_bytes is not None:
+        matrices = prepare_message_bytes(cryptogram_bytes)
+    else:
+        print("No message provided, cannot proceed")
+        exit()
     key = prepare_key(key_str)
 
     round_keys = expand_key(key)
@@ -53,6 +55,9 @@ def aes_ecb_decrypt(cryptogram_str: str, key_str: str) -> str:
         matrix = xor_matrices(matrix, round_key) # add round key
 
         msg.extend(matrix_to_list(matrix)) # append to the result
+
+    with open('output', 'wb') as file:
+        file.write(bytes(msg))
 
     s = list_to_str(msg)
     

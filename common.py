@@ -1,5 +1,6 @@
 from constants import *
-from typing import List, Tuple
+from typing import List
+import array
 
 def padding(message: List[int]) -> List[int]:
     """
@@ -40,7 +41,7 @@ def block_to_matrix(block: List[int]) -> List[List[int]]:
 
     return matrix
 
-def prepare_message(msg_str: str) -> List[List[List[int]]]:
+def prepare_message_str(msg_str: str) -> List[List[List[int]]]:
     """
     Prepare the message string for encryption
 
@@ -52,6 +53,27 @@ def prepare_message(msg_str: str) -> List[List[List[int]]]:
     """
     # turn the string into list of integers
     msg = [ ord(list(msg_str)[i]) for i in range(len(msg_str)) ]
+    # ensure proper length
+    msg = padding(msg)
+    # split the message into blocks, each 16 digits long
+    blocks = [ msg[i:i+16] for i in range(0, len(msg), 16) ]
+    # turn each block into a matrix
+    matrices = [ block_to_matrix(blocks[i]) for i in range(len(blocks)) ]
+
+    return matrices
+
+def prepare_message_bytes(msg_bytes: bytes) -> List[List[List[int]]]:
+    """
+    Prepare the message bytes for encryption
+
+    Parameters:
+        msg_str (str): arbitrary bytes representing message
+
+    Returns:
+        matrices (List[List[List[int]]]): list of 4x4 matrices, each representing block of message
+    """
+    # turn the bytes into list of integers
+    msg = list(array.array('B', msg_bytes))
     # ensure proper length
     msg = padding(msg)
     # split the message into blocks, each 16 digits long
@@ -82,7 +104,7 @@ def hex_str_to_list(cryptogram_str: str) -> List[int]:
 
     return l
 
-def prepare_cryptogram(cryptogram_str: str) -> List[List[List[int]]]:
+def prepare_cryptogram_str(cryptogram_str: str) -> List[List[List[int]]]:
     """
     Prepare the cryptogram string for decryption.
     It needs to be treated differently than the message string because it contains

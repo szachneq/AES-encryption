@@ -19,8 +19,9 @@ class Mode(Enum):
 class Parameters:
     function: Function
     mode: Mode
-    text: str
     key: str
+    text: Union[str, None] = None
+    bytes: Union[bytes, None] = None
     iv: Union[str, None] = None
 
 
@@ -59,48 +60,68 @@ def parse_cli() -> Parameters:
         usage()
         exit(1)
     
+    arg_pos = 1
     function: Function = None
     functions = [member.value for member in Function]
-    if sys.argv[1] in functions:
-        function = Function(sys.argv[1])
+    if sys.argv[arg_pos] in functions:
+        function = Function(sys.argv[arg_pos])
     else:
-        msg = f"{sys.argv[1]} is not a valid option. Choose either --encrypt or --decrypt"
+        msg = f"{sys.argv[arg_pos]} is not a valid option. Choose either --encrypt or --decrypt"
         error(msg)
         usage()
         exit()
+    arg_pos += 1
 
     mode: Mode = None
     modes = [member.value for member in Mode]
-    if sys.argv[2] in modes:
-        mode = Mode(sys.argv[2])
+    if sys.argv[arg_pos] in modes:
+        mode = Mode(sys.argv[arg_pos])
     else:
-        msg = f"{sys.argv[2]} is not a valid mode. Choose either --ecb or --cbc"
+        msg = f"{sys.argv[arg_pos]} is not a valid mode. Choose either --ecb or --cbc"
         error(msg)
         usage()
         exit()
+    arg_pos += 1
 
-    text: str = ''
-    if len(sys.argv[3]) > 0:
-        text: str = sys.argv[3]
+    text = None
+    loaded_bytes = None
+    if sys.argv[arg_pos] == '--file':
+        arg_pos += 1
+        filename = sys.argv[arg_pos]
+        with open(filename, 'rb') as file:
+            loaded_bytes = file.read()
+
     else:
-        msg = f"The message cannot be empty"
-        error(msg)
-        usage()
-        exit()
+        text = ''
+        if len(sys.argv[arg_pos]) > 0:
+            text: str = sys.argv[arg_pos]
+        else:
+            msg = f"The message cannot be empty"
+            error(msg)
+            usage()
+            exit()
+    arg_pos += 1
 
     key: str = ''
-    key_len = len(sys.argv[4])
+    key_len = len(sys.argv[arg_pos])
     if key_len in VALID_KEY_LENGTHS:
-        key: str = sys.argv[4]
+        key: str = sys.argv[arg_pos]
     else:
         msg = f"The key needs to be 16, 24 or 32 characters long"
         error(msg)
         usage()
         exit()
+    arg_pos += 1
 
     # We have all needed parameters for ECB
     if mode == Mode.ECB:
-        return Parameters(function, mode, text, key)
+        return Parameters(
+            function=function,
+            mode=mode,
+            text=text,
+            key=key,
+            bytes=loaded_bytes,
+        )
 
     iv: Union[str, None] = None
     if len(sys.argv) < MIN_NUM_ARGS + 1:
@@ -109,12 +130,19 @@ def parse_cli() -> Parameters:
         usage()
         exit()
 
-    if len(sys.argv[5]) == 16:
-        iv: str = sys.argv[4]
+    if len(sys.argv[arg_pos]) == 16:
+        iv: str = sys.argv[arg_pos]
     else:
         msg = f"The initialization vector needs to be exactly 128 bits long (16 characters)"
         error(msg)
         usage()
         exit()
 
-    return Parameters(function, mode, text, key, iv)
+    return Parameters(
+        function=function,
+        mode=mode,
+        text=text,
+        key=key,
+        iv=iv,
+        bytes=loaded_bytes,
+    )

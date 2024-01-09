@@ -7,21 +7,25 @@ from aes_cbc_decrypt import aes_cbc_decrypt
 
 if __name__ == "__main__":
     parameters = parse_cli()
+    # print(parameters)
+    # exit()
 
     if parameters.function == Function.ENCRYPT:
 
         if parameters.mode == Mode.ECB:
             r = aes_ecb_encrypt(
-                parameters.text,
-                parameters.key
+                msg_str=parameters.text,
+                msg_bytes=parameters.bytes,
+                key_str=parameters.key,
             )
             print(r)
 
         elif parameters.mode == Mode.CBC:
             r = aes_cbc_encrypt(
-                parameters.text,
-                parameters.key,
-                parameters.iv
+                msg_str=parameters.text,
+                msg_bytes=parameters.bytes,
+                key_str=parameters.key,
+                iv_str=parameters.iv,
             )
             print(r)
 
@@ -29,16 +33,17 @@ if __name__ == "__main__":
 
         if parameters.mode == Mode.ECB:
             r = aes_ecb_decrypt(
-                parameters.text,
-                parameters.key
+                cryptogram_str=parameters.text,
+                cryptogram_bytes=parameters.bytes,
+                key_str=parameters.key,
             )
             print(r)
 
         elif parameters.mode == Mode.CBC:
             r = aes_cbc_decrypt(
-                parameters.text,
-                parameters.key,
-                parameters.iv
+                cryptogram_str=parameters.text,
+                cryptogram_bytes=parameters.bytes,
+                key_str=parameters.key,
+                iv_str=parameters.iv,
             )
             print(r)
-

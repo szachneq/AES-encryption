@@ -2,7 +2,7 @@ from common import *
 from key_expansion import expand_key
 from typing import List
 
-def aes_ecb_encrypt(msg_str: str, key_str: str) -> str:
+def aes_ecb_encrypt(msg_str: str, msg_bytes: bytes, key_str: str) -> str:
     """
     Encrypt given message with a given key using AES ECB algorithm
     
@@ -21,7 +21,15 @@ def aes_ecb_encrypt(msg_str: str, key_str: str) -> str:
     # find values of constants used during the encryption
     NUM_ROUNDS = NUM_ROUNDS_FOR_KEY_LENGTH[len(key_str)]
 
-    matrices = prepare_message(msg_str)
+    matrices = None
+    if msg_str is not None:
+        matrices = prepare_message_str(msg_str)
+    elif msg_bytes is not None:
+        matrices = prepare_message_bytes(msg_bytes)
+    else:
+        print("No message provided, cannot proceed")
+        exit()
+
     key = prepare_key(key_str)
 
     round_keys = expand_key(key)
@@ -48,6 +56,9 @@ def aes_ecb_encrypt(msg_str: str, key_str: str) -> str:
         matrix = xor_matrices(matrix, round_key) # add round key
 
         cryptogram.extend(matrix_to_list(matrix)) # append to the result
+
+    with open('output', 'wb') as file:
+        file.write(bytes(cryptogram))
 
     s = list_to_hex_str(cryptogram)
     

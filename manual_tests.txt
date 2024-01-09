@@ -5,7 +5,11 @@ python3 main.py --decrypt --ecb a91329af99a78d02aec17c507757aaef abcdefghijklmno
 abcdefghijklmnop
 
 python3 main.py --encrypt --cbc abcdefghijklmnop abcdefghijklmnop ponmlkjihgfedcba
-f5657e278d0afad7c848b965898c31df
+6e8c41baaf428fc002f62e5f7b617a58
 
-python3 main.py --decrypt --cbc f5657e278d0afad7c848b965898c31df abcdefghijklmnop ponmlkjihgfedcba
+python3 main.py --decrypt --cbc 6e8c41baaf428fc002f62e5f7b617a58 abcdefghijklmnop ponmlkjihgfedcba
 abcdefghijklmnop
+
+
+
+python3 main.py --encrypt --ecb --file "test-files/abc.txt" abcdefghijklmnop
