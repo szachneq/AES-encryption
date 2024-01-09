@@ -10,7 +10,6 @@ def g(word: List[int], round: int) -> List[int]:
     Parameters:
         word (List[int]): List of 4 8-bit integers representing a binary word
         round (int): 0 based index of the round to which the word belongs
-        decrypt (bool): flag which specifies if we are performing decryption. False by default
 
     Returns:
         word (List[int]): Binary word after the modification
@@ -28,14 +27,12 @@ def g(word: List[int], round: int) -> List[int]:
 
     return w
 
+
 def expand_key(key: List[int]) -> List[List[int]]:
     """
     Perform expansion of given key.
-
     Parameters:
         key (List[int]): List of integers representing the key. It should be 16, 24 or 36 items long
-        decrypt (bool): flag which specifies if we are performing decryption. False by default
-
     Returns:
         words (List[List[int]]): List of 4 item long lists.
             Each short list represents a 32 bit word used as a part of round key
@@ -53,7 +50,6 @@ def expand_key(key: List[int]) -> List[List[int]]:
 
     # initialize the result with zeroes
     w = [[0] * 4] * NUM_WORDS
-
     # first n words are taken directly from the key
     for n in range(WORDS_PER_ROUND):
         i = n * 4
@@ -70,8 +66,6 @@ def expand_key(key: List[int]) -> List[List[int]]:
         if KEY256 and n % 8 == 4:
             # SBOX = INVERSE_SUBSTITUTION_BOX if decrypt else SUBSTITUTION_BOX
             t = [ SUBSTITUTION_BOX[word] for word in t ]
-
         # store in the result list
         w[n] = [ w[n-WORDS_PER_ROUND][i] ^ t[i] for i in range(4) ]
-
     return w

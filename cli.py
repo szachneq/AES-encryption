@@ -23,6 +23,7 @@ class Parameters:
     key: str
     iv: Union[str, None] = None
 
+
 def usage() -> None:
     """Print usage of the command line interface to the terminal window"""
     script_name = sys.argv[0]
@@ -38,10 +39,11 @@ def usage() -> None:
     {script_name} --decrypt --cbc "qazwsxedcrfvt" "abcdefghijklmnop" "qwertyuiopasdfgh"
 
     Remarks:
-    - the key needs to be either 128 bits long, provided in plaintext (16 ASCII characters, 1 byte each)
+    - the key needs to be either 16,24, or 32-byte long, provided in plaintext (16 ASCII characters, 1 byte each)
     - the iv (initialization vector) parameter is only needed for CBC mode. It is also required to be 16 characters long
     """
     print(msg)
+
 
 def error(msg: Union[str, None]) -> None:
     """Print error message to the terminal window"""
@@ -50,6 +52,7 @@ def error(msg: Union[str, None]) -> None:
 
 def parse_cli() -> Parameters:
     """Parse command line parameters and return them inside of an object"""
+
     if len(sys.argv) < MIN_NUM_ARGS:
         msg = "Insufficient amount of arguments"
         error(msg)
