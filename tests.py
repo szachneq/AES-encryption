@@ -22,6 +22,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_128_one")
+        print("Result: ",res," Reference: ",reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 128 bit key should be equal")
 
     def test_ecb_encrypt_128_two(self):
@@ -38,6 +40,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_128_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 128 bit key should be equal")
 
     def test_ecb_encrypt_192_one(self):
@@ -54,6 +58,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_192_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 192 bit key should be equal")
 
     def test_ecb_encrypt_192_two(self):
@@ -70,6 +76,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_192_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 192 bit key should be equal")
 
     def test_ecb_encrypt_256_one(self):
@@ -86,6 +94,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_256_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 256 bit key should be equal")
 
     def test_ecb_encrypt_256_two(self):
@@ -102,6 +112,8 @@ class TestEncryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_encrypt(msg_str, key_str)
 
+        print("test_ecb_encrypt_256_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for ECB encryption with 256 bit key should be equal")
 
 class TestEncryptCBC(unittest.TestCase):
@@ -121,6 +133,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_128_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 128 bit key should be equal")
 
     def test_cbc_encrypt_128_two(self):
@@ -139,6 +153,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_128_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 128 bit key should be equal")
 
     def test_cbc_encrypt_192_one(self):
@@ -157,6 +173,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_192_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 192 bit key should be equal")
 
     def test_cbc_encrypt_192_two(self):
@@ -175,6 +193,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_192_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 192 bit key should be equal")
 
     def test_cbc_encrypt_256_one(self):
@@ -193,6 +213,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_256_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 256 bit key should be equal")
 
     def test_cbc_encrypt_256_two(self):
@@ -211,9 +233,11 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_256_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 256 bit key should be equal")
 
-    def test_cbc_encrypt_256_two(self):
+    def test_cbc_encrypt_256_three(self):
         # prepare test case input data
         key_str = 'abcdefghijklmnopqrstuvwxyzabcdef'
         msg_str = "My special message you won't see"
@@ -229,6 +253,8 @@ class TestEncryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_encrypt(msg_str, key_str, iv_str)
 
+        print("test_cbc_encrypt_256_three")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC encryption with 256 bit key should be equal")
 
 class TestDecryptECB(unittest.TestCase):
@@ -248,6 +274,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_128_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 128 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 128 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 128 bit key should be equal")
@@ -268,6 +296,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_128_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 128 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 128 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 128 bit key should be equal")
@@ -288,6 +318,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_192_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 192 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 192 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 192 bit key should be equal")
@@ -298,7 +330,7 @@ class TestDecryptECB(unittest.TestCase):
         crypto_str = '1c25a336a846dd44d8d31323233ce59fc92d70fcaec52753e58a990b8cc863d4'
         expected_msg = "My special message you won't see"
         key_bytes = key_str.encode('utf-8')
-        # convery every 2 letters into a hex number
+        # convert every 2 letters into a hex number
         crypto_bytes = bytes(int(crypto_str[i:i+2], 16) for i in range(0, len(crypto_str), 2))
         
         # compute reference
@@ -308,6 +340,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_192_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 192 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 192 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 192 bit key should be equal")
@@ -328,6 +362,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_256_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 256 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 256 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 256 bit key should be equal")
@@ -348,6 +384,8 @@ class TestDecryptECB(unittest.TestCase):
         # compute our result
         res = aes_ecb_decrypt(crypto_str, key_str)
 
+        print("test_ecb_decrypt_256_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, expected_msg, "Results for ECB decryption with 256 bit key should be equal")
         self.assertEqual(reference, expected_msg, "Results for ECB decryption with 256 bit key should be equal")
         self.assertEqual(res, reference, "Results for ECB decryption with 256 bit key should be equal")
@@ -370,6 +408,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_128_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 128 bit key should be equal")
 
     def test_cbc_decrypt_128_two(self):
@@ -389,6 +429,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_128_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 128 bit key should be equal")
 
     def test_cbc_decrypt_192_one(self):
@@ -408,6 +450,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_192_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 192 bit key should be equal")
 
     def test_cbc_decrypt_192_two(self):
@@ -427,6 +471,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_192_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 192 bit key should be equal")
 
     def test_cbc_decrypt_256_one(self):
@@ -446,6 +492,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_256_one")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 256 bit key should be equal")
 
     def test_cbc_decrypt_256_two(self):
@@ -465,6 +513,8 @@ class TestDecryptCBC(unittest.TestCase):
         # compute our result
         res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
 
+        print("test_cbc_decrypt_256_two")
+        print("Result: ", res, " Reference: ", reference)
         self.assertEqual(res, reference, "Results for CBC decryption with 256 bit key should be equal")
 
 if __name__ == '__main__':
