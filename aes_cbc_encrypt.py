@@ -2,7 +2,7 @@ from common import *
 from key_expansion import expand_key
 from typing import List
 
-def aes_cbc_encrypt(msg_str: str, msg_bytes: bytes, key_str: str, iv_str: str) -> str:
+def aes_cbc_encrypt(key_str: str, iv_str: str, msg_str: str = None, msg_bytes: bytes = None) -> str:
     """
     Encrypt given message with a given key using AES CBC algorithm
     

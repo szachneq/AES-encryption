@@ -2,7 +2,7 @@ from constants import *
 from common import *
 from key_expansion import expand_key
 
-def aes_ecb_decrypt(cryptogram_str: str, cryptogram_bytes: bytes, key_str: str) -> str:
+def aes_ecb_decrypt(key_str: str, cryptogram_str: str = None, cryptogram_bytes: bytes = None) -> str:
     """
     Decrypt given cryptogram with a given key using AES ECB algorithm
     

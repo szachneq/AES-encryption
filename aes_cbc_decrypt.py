@@ -3,7 +3,7 @@ from key_expansion import expand_key
 from typing import List
 from copy import deepcopy
 
-def aes_cbc_decrypt(cryptogram_str: str, cryptogram_bytes: bytes, key_str: str, iv_str: str) -> str:
+def aes_cbc_decrypt(key_str: str, iv_str: str, cryptogram_str: str = None, cryptogram_bytes: bytes = None) -> str:
     """
     Decrypt given cryptogram with a given key using AES CBC algorithm
 

@@ -20,7 +20,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_128_one")
         print("Result: ",res," Reference: ",reference)
@@ -38,7 +38,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_128_two")
         print("Result: ", res, " Reference: ", reference)
@@ -56,7 +56,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_192_one")
         print("Result: ", res, " Reference: ", reference)
@@ -74,7 +74,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_192_two")
         print("Result: ", res, " Reference: ", reference)
@@ -92,7 +92,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_256_one")
         print("Result: ", res, " Reference: ", reference)
@@ -110,7 +110,7 @@ class TestEncryptECB(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_ecb_encrypt(msg_str, key_str)
+        res = aes_ecb_encrypt(msg_str=msg_str, key_str=key_str)
 
         print("test_ecb_encrypt_256_two")
         print("Result: ", res, " Reference: ", reference)
@@ -131,7 +131,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_128_one")
         print("Result: ", res, " Reference: ", reference)
@@ -151,7 +151,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_128_two")
         print("Result: ", res, " Reference: ", reference)
@@ -171,7 +171,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_192_one")
         print("Result: ", res, " Reference: ", reference)
@@ -191,7 +191,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_192_two")
         print("Result: ", res, " Reference: ", reference)
@@ -211,7 +211,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_256_one")
         print("Result: ", res, " Reference: ", reference)
@@ -231,7 +231,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_256_two")
         print("Result: ", res, " Reference: ", reference)
@@ -251,7 +251,7 @@ class TestEncryptCBC(unittest.TestCase):
         reference = c.encrypt(msg_bytes)
         reference = list_to_hex_str(reference)
         # compute our result
-        res = aes_cbc_encrypt(msg_str, key_str, iv_str)
+        res = aes_cbc_encrypt(msg_str=msg_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_encrypt_256_three")
         print("Result: ", res, " Reference: ", reference)
@@ -272,7 +272,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_128_one")
         print("Result: ", res, " Reference: ", reference)
@@ -294,7 +294,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_128_two")
         print("Result: ", res, " Reference: ", reference)
@@ -316,7 +316,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_192_one")
         print("Result: ", res, " Reference: ", reference)
@@ -338,7 +338,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_192_two")
         print("Result: ", res, " Reference: ", reference)
@@ -360,7 +360,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_256_one")
         print("Result: ", res, " Reference: ", reference)
@@ -382,7 +382,7 @@ class TestDecryptECB(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_ecb_decrypt(crypto_str, key_str)
+        res = aes_ecb_decrypt(cryptogram_str=crypto_str, key_str=key_str)
 
         print("test_ecb_decrypt_256_two")
         print("Result: ", res, " Reference: ", reference)
@@ -406,7 +406,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_128_one")
         print("Result: ", res, " Reference: ", reference)
@@ -427,7 +427,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_128_two")
         print("Result: ", res, " Reference: ", reference)
@@ -448,7 +448,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_192_one")
         print("Result: ", res, " Reference: ", reference)
@@ -469,7 +469,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_192_two")
         print("Result: ", res, " Reference: ", reference)
@@ -490,7 +490,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_256_one")
         print("Result: ", res, " Reference: ", reference)
@@ -511,7 +511,7 @@ class TestDecryptCBC(unittest.TestCase):
         reference = c.decrypt(crypto_bytes)
         reference = list_to_str(reference)
         # compute our result
-        res = aes_cbc_decrypt(crypto_str, key_str, iv_str)
+        res = aes_cbc_decrypt(cryptogram_str=crypto_str, key_str=key_str, iv_str=iv_str)
 
         print("test_cbc_decrypt_256_two")
         print("Result: ", res, " Reference: ", reference)
