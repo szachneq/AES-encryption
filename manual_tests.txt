@@ -10,6 +10,6 @@ python3 main.py --encrypt --cbc abcdefghijklmnop abcdefghijklmnop ponmlkjihgfedc
 python3 main.py --decrypt --cbc 6e8c41baaf428fc002f62e5f7b617a58 abcdefghijklmnop ponmlkjihgfedcba
 abcdefghijklmnop
 
-
-
 python3 main.py --encrypt --ecb --file "test-files/abc.txt" abcdefghijklmnop
+
+python3 main.py --decrypt --cbc --file "output" abcdefghijklmnop ponmlkjihgfedcba

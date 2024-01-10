@@ -30,7 +30,7 @@ def usage() -> None:
     script_name = sys.argv[0]
     msg = f"""
     Usage:
-    {script_name} --encrypt|--decrypt --ecb|--cbc <message/cryptogram> <key> [iv]
+    {script_name} --encrypt|--decrypt --ecb|--cbc [--file] <message/cryptogram/path to file> <key> [iv]
 
     Examples:
     {script_name} --encrypt --ecb "Hello, World!" "abcdefghijklmnop"
@@ -39,9 +39,13 @@ def usage() -> None:
     {script_name} --encrypt --cbc "Hello, World!" "abcdefghijklmnop" "qwertyuiopasdfgh"
     {script_name} --decrypt --cbc "qazwsxedcrfvt" "abcdefghijklmnop" "qwertyuiopasdfgh"
 
+    {script_name} --encrypt --ecb --file "test-files/abc.txt" abcdefghijklmnop
+    {script_name} --decrypt --cbc --file "output" abcdefghijklmnop ponmlkjihgfedcba
+
     Remarks:
     - the key needs to be either 16,24, or 32-byte long, provided in plaintext (16 ASCII characters, 1 byte each)
     - the iv (initialization vector) parameter is only needed for CBC mode. It is also required to be 16 characters long
+    - the result of encryption is always saved into file called "output". This file can be later decrypted using our tool
     """
     print(msg)
 
